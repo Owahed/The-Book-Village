@@ -13,13 +13,14 @@ const OrderList = () => {
     },[])
 
     return (
-        <div>
-            <h2>You have:{orders.length}</h2>
+        <div style={{textAlign:'center'}}>
+            
             {
-                orders.map(order=><li>Book: {order.name} date:{}</li>)
+                orders.map(order=><li>Book: {order.name}  || Price: {order.amount}</li>)
             }
         </div>
     );
+
 };
 
 export default OrderList;

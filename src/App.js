@@ -15,6 +15,8 @@ import Product from './Components/Product/Product';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import { Nav, Navbar } from 'react-bootstrap';
 import OrderList from './Components/OrderList/OrderList';
+import Admin from './Components/Admin/Admin';
+import ManageProduct from './Components/ManageProduct/ManageProduct';
 
 export const UserContext = createContext()
 
@@ -31,7 +33,7 @@ function App() {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/order">Order</Nav.Link>
-              <Nav.Link href="/addBook">Admin</Nav.Link>
+              <Nav.Link href="/admin">Admin</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link  href="/login"> <b>{loggedInUser.name}</b></Nav.Link>
             </Nav>
@@ -43,8 +45,8 @@ function App() {
               <Home></Home>
             </Route>
 
-            <PrivateRoute path="/addBook">
-              <AddBook></AddBook>
+            <PrivateRoute path="/admin">
+              <Admin></Admin>
             </PrivateRoute>
             <PrivateRoute path="/order">
               <OrderList></OrderList>
@@ -54,6 +56,12 @@ function App() {
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/addBook">
+              <AddBook></AddBook>
+            </Route>
+            <Route path="/manageProduct">
+              <ManageProduct></ManageProduct>
             </Route>
 
           </Switch>

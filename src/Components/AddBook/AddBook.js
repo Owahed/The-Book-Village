@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import "./AddBook.css"
 
 const AddBook = () => {
@@ -42,6 +43,7 @@ const AddBook = () => {
   }
   return (
     <div className="book">
+       <Link to="/manageProduct">Manage Product</Link>
       <form onSubmit={handleSubmit(onSubmit)}>
        <div className="input">
        <div>
