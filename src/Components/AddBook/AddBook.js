@@ -14,7 +14,7 @@ const AddBook = () => {
       amount: data.amount,
       imageURL: imageURL,
     };
-    const url = `http://localhost:5005/addBook`;
+    const url = `https://obscure-sea-42742.herokuapp.com/addBook`;
 
     console.log(eventData);
     fetch(url, {
@@ -33,7 +33,7 @@ const AddBook = () => {
     imageData.set('key', 'bbd345fb35c0d562d641bb02a250865b');
     imageData.append('image', event.target.files[0]);
 
-    axios.post('https://api.imgbb.com/1/upload', imageData)
+    axios.post('https://api.imgbb.com/1/upload/books', imageData)
       .then(function (response) {
         setImageURL(response.data.data.display_url);
       })

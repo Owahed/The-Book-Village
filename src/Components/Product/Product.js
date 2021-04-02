@@ -27,14 +27,14 @@ const Product = () => {
     // console.log(productData)
 
     useEffect(() => {
-        fetch('http://localhost:5005/books')
+        fetch('https://obscure-sea-42742.herokuapp.com/books')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
 
     const handelCheckOut =()=>{
         const bookOrder={...loggedInUser,...productData};
-        fetch('http://localhost:5005/bookOrder',{
+        fetch('https://obscure-sea-42742.herokuapp.com/bookOrder',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify(bookOrder)

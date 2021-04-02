@@ -7,7 +7,7 @@ const OrderList = () => {
     console.log(orders)
 
     useEffect(()=>{
-        fetch('http://localhost:5005/allOrder?email='+loggedInUser.email)
+        fetch('https://obscure-sea-42742.herokuapp.com/allOrder?email='+loggedInUser.email)
         .then(res=>res.json())
         .then(data=>setOrders(data));
     },[])

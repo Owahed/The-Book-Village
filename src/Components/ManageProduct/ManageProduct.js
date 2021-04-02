@@ -21,65 +21,68 @@ const useStyles = makeStyles({
 
 
 const ManageProduct = () => {
-    const [books, setBooks] = useState([]);
-    // const id = books._id;
-    // console.log(books);
+  const [books, setBooks] = useState([]);
+  // const id = books._id;
+  // console.log(books);
 
-    useEffect(() => {
-        fetch('http://localhost:5005/books')
-            .then(res => res.json())
-            .then(data => setBooks(data))
-    }, []);
+  useEffect(() => {
+    fetch('https://obscure-sea-42742.herokuapp.com/books')
+      .then(res => res.json())
+      .then(data => setBooks(data))
+  }, []);
 
 
-    const deleteProduct=(id)=>{
-        fetch(`http://localhost:5005/delete/${id}`,{
-            method:'DELETE',
-
-        })
-        .then(res=>res.json())
-        .then(result=>{
-            console.log('delete')
-        })
-    }
+  const deleteProduct = (event, id) => {
     
-    // --------------------------------------------
-    const classes = useStyles();
-    return (
-        <div>
-           <div style={{textAlign:'center',padding:'5%'}}>
-           <Link to='/addBook'>Add book</Link>
-           </div>
-            
-            <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell> <b>Book Name</b></TableCell>
-            <TableCell align="right"> <b>Quantity</b></TableCell>
-            <TableCell align="right"> <b>Price</b></TableCell>
-            
-            <TableCell align="right"><b>Action</b></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {books.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">-</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-              
-              <TableCell align="right"><Button onClick={()=>deleteProduct(row._id)} variant="contained" color="secondary">Delete</Button></TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    fetch(`https://obscure-sea-42742.herokuapp.com/delete/${id}`, {
+      method: 'DELETE',
 
-        </div>
-    );
+    })
+      .then(res => res.json())
+      .then(result => {
+        if(result){
+          event.target.parentNode.style.display="none"
+        }
+      })
+  }
+
+  // --------------------------------------------
+  const classes = useStyles();
+  return (
+    <div>
+      <div style={{ textAlign: 'center', padding: '5%' }}>
+        <Link to='/addBook'>Add book</Link>
+      </div>
+
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell> <b>Book Name</b></TableCell>
+              <TableCell align="right"> <b>Quantity</b></TableCell>
+              <TableCell align="right"> <b>Price</b></TableCell>
+
+              <TableCell align="right"><b>Action</b></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {books.map((row) => (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">-</TableCell>
+                <TableCell align="right">{row.amount}</TableCell>
+
+                <TableCell align="right"><Button onClick={(event) => deleteProduct(event, row._id)} variant="contained" color="secondary">Delete</Button></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+    </div>
+  );
 };
 
 export default ManageProduct;
