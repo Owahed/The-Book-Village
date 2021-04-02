@@ -1,0 +1,14 @@
+.book{
+    text-align: center;
+}
+.input{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin-left: 5%;
+   margin-top: 5%;
+   margin-bottom: 2%;
+}
+input{
+    margin-left: 2%;
+}
