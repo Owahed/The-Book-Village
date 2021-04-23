@@ -30,7 +30,7 @@ const AddBook = () => {
   const handelImageUpload = event => {
     console.log(event.target.files[0])
     const imageData = new FormData();
-    imageData.set('key', 'bbd345fb35c0d562d641bb02a250865b');
+    imageData.set('key', '9c41fec4c704740a0c23135b3efa4a21');
     imageData.append('image', event.target.files[0]);
 
     axios.post('https://api.imgbb.com/1/upload/books', imageData)
